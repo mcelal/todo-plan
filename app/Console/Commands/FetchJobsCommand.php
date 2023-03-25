@@ -54,7 +54,7 @@ class FetchJobsCommand extends Command
 
         // Tüm job kayıtlarını db'den sil
         $this->newLine();
-        $this->line('DB\'den eski job kayıtları siliniyor..');
+        $this->line('DB\'den eski job kayıtlar siliniyor..');
         Job::query()->truncate();
 
 
