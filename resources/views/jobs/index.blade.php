@@ -5,7 +5,14 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Jobs') }}</div>
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <span class="h3 m-0">{{ __('Jobs') }}</span>
+                        <ul class="nav nav-pills card-header-pills justify-content-end">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ route('jobs.re-import') }}">Re-Import</a>
+                            </li>
+                        </ul>
+                    </div><!-- ./card-header -->
 
                     <div class="card-body">
                         <table class="table table-hover">
@@ -30,9 +37,9 @@
                         </table>
 
                         {{ $jobs->links() }}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                    </div><!-- ./card-body -->
+                </div><!-- ./card -->
+            </div><!-- ./col-md-8 -->
+        </div><!-- ./row -->
+    </div><!-- ./container -->
 @endsection

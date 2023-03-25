@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Artisan;
 
 class JobController extends Controller
 {
@@ -20,50 +21,14 @@ class JobController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Provider üzerinden jobların tekrar çekilmesini tetikler
+     *
+     * @return RedirectResponse
      */
-    public function create()
+    public function reImport(): RedirectResponse
     {
-        //
-    }
+        Artisan::call('app:fetch-jobs');
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->route('jobs.index');
     }
 }

@@ -16,7 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])
+    ->name('home');
 
-Route::resource('/developers', DeveloperController::class);
-Route::resource('/jobs', JobController::class);
+Route::get('/developers', [DeveloperController::class, 'index'])
+    ->name('developers.index');
+
+Route::get('/jobs', [JobController::class, 'index'])
+    ->name('jobs.index');
+
+Route::get('/jobs/reimport', [JobController::class, 'reImport'])
+    ->name('jobs.re-import');
+

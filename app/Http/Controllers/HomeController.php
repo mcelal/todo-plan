@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Repos\PlanningRepo;
+use Illuminate\Contracts\View\View;
 
 class HomeController extends Controller
 {
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return View
      */
-    public function index()
+    public function index(): View
     {
-        return view('home');
+        $repo = new PlanningRepo();
+        $report = $repo->calculate();
+
+        return view('home', compact('report'));
     }
 }
